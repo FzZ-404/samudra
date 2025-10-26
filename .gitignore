@@ -1,0 +1,23 @@
+# Sistem CodeIgniter
+system/
+
+# Cache dan log
+application/cache/*
+application/logs/*
+
+# File lingkungan
+.env
+*.env
+
+# Folder upload atau hasil runtime
+uploads/
+vendor/
+
+# File editor
+.vscode/
+.idea/
+
+# XAMPP config
+*.sql
+*.bak
+*.zip
