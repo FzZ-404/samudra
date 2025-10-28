@@ -2,16 +2,16 @@
 
 class Article_model extends CI_Model {
 
-  public function latest($limit=12){
-    return $this->db->order_by('published_at','DESC')
-      ->limit($limit)->get_where('articles',['published'=>1])->result();
+  public function get_all(){
+    return $this->db->order_by('id','DESC')->get('articles')->result();
   }
 
-  public function get_all($q = null){
+  public function search($q = null){
     if($q){
       $this->db->group_start()
                ->like('title',$q)
                ->or_like('excerpt',$q)
+               ->or_like('content',$q)
                ->group_end();
     }
     return $this->db->order_by('id','DESC')->get('articles')->result();
@@ -22,8 +22,7 @@ class Article_model extends CI_Model {
   }
 
   public function create($data){
-    $this->db->insert('articles',$data);
-    return $this->db->insert_id();
+    return $this->db->insert('articles',$data);
   }
 
   public function update($id,$data){
@@ -32,5 +31,12 @@ class Article_model extends CI_Model {
 
   public function delete($id){
     return $this->db->delete('articles',['id'=>$id]);
+  }
+
+  public function latest($limit=12){
+    return $this->db->order_by('published_at','DESC')
+                    ->limit($limit)
+                    ->get_where('articles',['published'=>1])
+                    ->result();
   }
 }
