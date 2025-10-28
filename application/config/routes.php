@@ -26,6 +26,10 @@ $route['admin/events/(:num)/edit'] = 'admin/events/edit/$1';
 $route['admin/events/(:num)/update'] = 'admin/events/update/$1';
 $route['admin/events/(:num)/delete'] = 'admin/events/delete/$1';
 
+$route['event']           = 'event/index';
+$route['event/view/(:num)'] = 'event/view/$1';
+
+
 /* ===== QUIZZES ===== */
 $route['admin/quizzes'] = 'admin/quizzes/index';
 $route['admin/quizzes/create'] = 'admin/quizzes/create';
@@ -40,6 +44,14 @@ $route['quiz/submit/(:num)'] = 'quiz/submit/$1';
 
 $route['admin/quizzes/add_question/(:num)'] = 'admin/quizzes/add_question/$1';
 $route['admin/quizzes/(:num)/delete_question/(:num)'] = 'admin/quizzes/delete_question/$1/$2';
+
+//login
+$route['login']  = 'auth/login';
+$route['signup'] = 'auth/register';
+$route['logout'] = 'auth/logout';
+
+$route['language/switch/(:any)'] = 'language/switch/$1';
+
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

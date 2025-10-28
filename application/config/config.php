@@ -16,6 +16,7 @@ $config['url_suffix'] = '';
 
 
 $config['language']	= 'english';
+$config['language'] = 'indonesian';
 
 
 $config['charset'] = 'UTF-8';

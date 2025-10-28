@@ -105,6 +105,9 @@ $autoload['helper'] = ['url','form','text','auth'];
 */
 $autoload['config'] = array();
 
+$autoload['language'] = array('app');
+
+
 /*
 | -------------------------------------------------------------------
 |  Auto-load Language files

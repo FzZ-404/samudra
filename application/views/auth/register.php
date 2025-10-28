@@ -11,7 +11,7 @@
     padding: 20px;
   }
   .auth-card {
-    width: 100%; max-width: 400px;
+    width: 100%; max-width: 420px;
     background: linear-gradient(180deg,#0b2345 0%,#081b34 100%);
     border: 1px solid rgba(255,255,255,.08);
     border-radius: 16px;
@@ -54,35 +54,39 @@
   .alt a {color:#9fd3ff;text-decoration:none}
   .alt a:hover {text-decoration:underline}
   .flash {
-    background:#ff767520;padding:.5rem;
-    border-radius:.5rem;color:#ff7675;
+    background:#00b89420;padding:.5rem;
+    border-radius:.5rem;color:#00b894;
     text-align:center;margin-bottom:10px;
   }
 </style>
 
 <div class="auth-wrapper">
   <div class="auth-card">
-    <h2>Selamat Datang</h2>
-    <div class="auth-sub">Masuk untuk melanjutkan perjalanan edukasi laut 🌊</div>
+    <h2>Buat Akun Baru</h2>
+    <div class="auth-sub">Gabung & jelajahi dunia konservasi laut 🌊</div>
 
-    <?php if($this->session->flashdata('error')): ?>
-      <div class="flash"><?= $this->session->flashdata('error'); ?></div>
+    <?php if($this->session->flashdata('success')): ?>
+      <div class="flash"><?= $this->session->flashdata('success'); ?></div>
     <?php endif; ?>
 
-    <form method="post" action="<?= site_url('auth/do_login'); ?>">
+    <form method="post" action="<?= site_url('auth/do_register'); ?>">
+      <div class="form-group">
+        <label>Nama Lengkap</label>
+        <input type="text" name="name" placeholder="Nama lengkap kamu" required>
+      </div>
       <div class="form-group">
         <label>Email</label>
         <input type="email" name="email" placeholder="contoh: kamu@email.com" required>
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type="password" name="password" placeholder="••••••••" required>
+        <input type="password" name="password" placeholder="Minimal 6 karakter" required>
       </div>
-      <button type="submit">Masuk</button>
+      <button type="submit">Daftar</button>
     </form>
 
     <div class="alt">
-      Belum punya akun? <a href="<?= site_url('signup'); ?>">Daftar sekarang</a>
+      Sudah punya akun? <a href="<?= site_url('login'); ?>">Login</a>
     </div>
   </div>
 </div>

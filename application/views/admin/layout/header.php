@@ -71,9 +71,25 @@
       font-weight: 600;
     }
     .topbar .user {
+      display:flex;
+      align-items:center;
+      gap:10px;
       font-weight: 500;
       color: #475569;
     }
+    .logout-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background: var(--accent);
+      color:#fff !important;
+      border-radius:8px;
+      padding:6px 12px;
+      text-decoration:none;
+      font-weight:600;
+      transition:.2s;
+    }
+    .logout-btn:hover { background:#0090b8; color:#fff !important; }
     .content-area {
       padding: 1.5rem;
       flex: 1;
@@ -102,7 +118,7 @@
     <a href="<?= site_url('admin/articles'); ?>" class="<?= strpos(uri_string(),'articles')!==false?'active':''; ?>"><i class="bi bi-file-earmark-text me-2"></i> Artikel</a>
     <a href="<?= site_url('admin/events'); ?>" class="<?= strpos(uri_string(),'events')!==false?'active':''; ?>"><i class="bi bi-calendar-event me-2"></i> Event</a>
     <a href="<?= site_url('admin/quizzes'); ?>" class="<?= strpos(uri_string(),'quizzes')!==false?'active':''; ?>"><i class="bi bi-question-circle me-2"></i> Kuis</a>
-    <a href="<?= site_url('admin/logout'); ?>"><i class="bi bi-box-arrow-right me-2"></i> Keluar</a>
+    <a href="<?= site_url('logout'); ?>"><i class="bi bi-box-arrow-right me-2"></i> Keluar</a>
   </div>
 
   <!-- Main Content -->
@@ -110,6 +126,12 @@
     <div class="topbar">
       <button class="btn btn-sm d-md-none" id="toggleSidebar"><i class="bi bi-list fs-4"></i></button>
       <h1><?= isset($title)? $title:'Admin'; ?></h1>
-      <div class="user"><i class="bi bi-person-circle me-1"></i> Admin</div>
+      <div class="user">
+        <i class="bi bi-person-circle"></i>
+        <span><?= $this->session->userdata('user')['name'] ?? 'Admin'; ?></span>
+        <a href="<?= site_url('logout'); ?>" class="logout-btn">
+          <i class="bi bi-box-arrow-right"></i> Logout
+        </a>
+      </div>
     </div>
     <div class="content-area">
